@@ -1,0 +1,12 @@
+.btn {
+    color: red;
+}
+.btn:hover {
+    padding: 40px;
+}
+
+@media (max-width: 600px) {
+    .btn {
+        background: blue;
+    }
+}
