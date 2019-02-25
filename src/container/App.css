@@ -1,5 +1,10 @@
+body {
+    margin: 0;
+}
 main {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex: 1;
+    background-color: #e9e8e8;
 }
