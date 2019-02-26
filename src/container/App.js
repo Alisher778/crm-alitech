@@ -15,7 +15,7 @@ class App extends Component {
     return (
         <main>
 			    <Sidebar toggle={this.sidebarHandler} status={this.props.sidebar.isOpen}/>
-        	<section>
+        	<section id="main-content">
             <Switch>
               <Route path="/students" component={StudentList}/>
             </Switch>
