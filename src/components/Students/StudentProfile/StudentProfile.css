@@ -1,0 +1,16 @@
+.Header {
+    width: 100%;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.HeaderLeft {
+    flex: 1 33%;
+}
+.HeaderLeft img {
+    width: 100%;
+}
+.HeaderRight {
+    flex: 1 66%;
+}
