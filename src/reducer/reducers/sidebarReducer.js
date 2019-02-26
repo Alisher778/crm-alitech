@@ -1,5 +1,5 @@
 import { TOOGLE_MENU } from '../actions/index';
-const initialState = {isOpen: false};
+const initialState = {isOpen: true};
 
 const sidebarReducer = (state=initialState, action) => {
     switch(action.type) {

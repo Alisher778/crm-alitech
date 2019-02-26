@@ -10,12 +10,23 @@
     background-color: rgb(11, 39, 92);
 }
 .Open {
-    transition: 1s;
+    transition: 0.6s;
     width: 25%;
+}
+.Open .NavLinks {
+    display: flex;
+    transition: 1s;
+    transition-delay: 0.2s;
+    opacity: 1;
 }
 .Close {
     width: 0;
+    transition: 0.6s;
+}
+.Close .NavLinks {
+    display: none;
     transition: 1s;
+    opacity: 0;
 }
 .CloseBtn {
     position: absolute;
@@ -27,6 +38,12 @@
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+}
+.NavLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .SidebarLinks a {
     margin: 20px 0;
