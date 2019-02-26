@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar/Sidebar';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleMenu } from '../reducer/actions';
 import './App.css';
+import StudentList from '../components/Students/StudentsList';
 
 class App extends Component {
   sidebarHandler = () => {
@@ -13,7 +15,11 @@ class App extends Component {
     return (
         <main>
 			    <Sidebar toggle={this.sidebarHandler} status={this.props.sidebar.isOpen}/>
-        	<h1>Hello react</h1>
+        	<section>
+            <Switch>
+              <Route path="/students" component={StudentList}/>
+            </Switch>
+          </section>
         </main>
     );
   }
@@ -30,4 +36,4 @@ const mapDispatchToProps = dispatch => {
     sidebarToggle: (status) => dispatch(toggleMenu(status))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
