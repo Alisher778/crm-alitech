@@ -18,13 +18,6 @@ const studentList = (props) => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <React.Suspense fallback={<div>...</div>}>
-                        <div>
-                             <Student/>
-                        </div>
-                    </React.Suspense>
-                </tr>
                 <tr className={cssClasses.StudentRow}>
                     <td><img src="https://image.flaticon.com/icons/svg/163/163814.svg" alt="User Name" className={cssClasses.ProfileImg}/></td>
                     <td><Link to="/students/alisher-musurmonov">Alisher Musurmonov</Link></td>
