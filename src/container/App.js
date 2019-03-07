@@ -16,7 +16,7 @@ class App extends Component {
     return (
         <main>
 			    <Sidebar toggle={this.sidebarHandler} status={this.props.sidebar.isOpen}/>
-        	<section id="main-content">
+        	<section id="main-content" style={this.props.sidebar.isOpen?styles.w75:null}>
             <Switch>
               <Route path="/students" exact component={StudentsList}/>
               <Route path="/students/:id" component={StudentProfile}/>
@@ -26,7 +26,13 @@ class App extends Component {
     );
   }
 }
-
+const styles = {
+  w75: {
+    width: '75%',
+    marginLeft: '25%',
+    transition:'1s'
+  }
+}
 const mapStateToProps = state => {
   return {
     sidebar: state.sidebar

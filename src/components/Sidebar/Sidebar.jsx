@@ -5,7 +5,6 @@ import logo from '../../assets/imgs/logo.svg';
 
 const sidebar = (props) => {
     let menuClasses = cssClasses.SidebarLinks;
-    console.log('classes',menuClasses)
     if(props.status) {
         menuClasses = [cssClasses.SidebarLinks, cssClasses.Open].join(' ');
     } else {

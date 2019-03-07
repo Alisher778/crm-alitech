@@ -14,4 +14,5 @@ main section {
     flex: 1;
     min-height: 100vh;
     padding: 30px;
+    transition: 1s;
 }
