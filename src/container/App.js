@@ -6,6 +6,18 @@ import { toggleMenu } from '../reducer/actions';
 import './App.css';
 import StudentsList from '../components/Students/StudentsList/StudentsList';
 import StudentProfile from '../components/Students/StudentProfile/StudentProfile';
+import firebase from "firebase";
+import AddStudent from '../components/Students/AddStudent/AddStudent';
+
+const config = {
+  apiKey: "AIzaSyBXDE9O3MxfxlHUSDe-22cSEqexapAR3pw",
+  authDomain: "alietch-crm.firebaseapp.com",
+  databaseURL: "https://alietch-crm.firebaseio.com",
+  projectId: "alietch-crm",
+  storageBucket: "alietch-crm.appspot.com",
+  messagingSenderId: "486948134862"
+};
+firebase.initializeApp(config);
 
 class App extends Component {
   sidebarHandler = () => {
@@ -19,6 +31,7 @@ class App extends Component {
         	<section id="main-content" style={this.props.sidebar.isOpen?styles.w75:null}>
             <Switch>
               <Route path="/students" exact component={StudentsList}/>
+              <Route path="/students/add-student" exact component={AddStudent}/>
               <Route path="/students/:id" component={StudentProfile}/>
             </Switch>
           </section>

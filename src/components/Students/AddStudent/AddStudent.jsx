@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class AddStudent extends Component {
     state = {}
@@ -6,6 +7,7 @@ class AddStudent extends Component {
     render() {
         return(
             <div>
+                <p><Link to="/students">Back To Students</Link></p>
                 <h2>Add New Student</h2>
                 <form>
                     <div id="bio">
@@ -14,9 +16,12 @@ class AddStudent extends Component {
                         <input type="text" name="lastName" placeholder="Last Name"/>
                         <input type="email" name="email" placeholder="email"/>
                         <input type="number" name="phone" placeholder="Phone"/>
+                        <button>Add Student</button>
                     </div>
                 </form>
             </div>
         );
     }
 }
+
+export default AddStudent;
