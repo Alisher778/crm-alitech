@@ -14,3 +14,18 @@
 .HeaderRight {
     flex: 1 66%;
 }
+
+@media screen and (max-width: 1024px) {
+    .HeaderLeft, .HeaderRight {
+        flex: 1 50%;
+    }
+} 
+
+@media screen and (max-width: 768px) {
+    .Header {
+        flex-direction: column;
+    }
+    .HeaderLeft, .HeaderRight {
+        flex: 1 100%;
+    }
+} 

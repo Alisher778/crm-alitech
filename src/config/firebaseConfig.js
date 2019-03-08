@@ -11,8 +11,9 @@ const config = {
     projectId: "alietch-crm",
     storageBucket: "alietch-crm.appspot.com",
     messagingSenderId: "486948134862"
-  };
-  firebase.initializeApp(config);
-  firebase.firestore();
+};
+firebase.initializeApp(config);
+firebase.firestore();
+
 
 export default firebase;

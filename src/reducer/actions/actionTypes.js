@@ -1,1 +1,2 @@
 export const TOOGLE_MENU = "TOOGLE_MENU";
+export const STUDENTS_LIST = "STUDENTS_LIST";

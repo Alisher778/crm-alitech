@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cssClasses from './StudentProfile.css';
+import firebase from '../../../config/firebaseConfig';
 
+const db = firebase.firestore().collection('students');
 const studentProfile = (props) => {
+
     return (
         <div>
+            <a href="#delte">Delete Student</a>
             <div className={cssClasses.Header}>
                 <div className={cssClasses.HeaderLeft}>
                     <img src="https://image.flaticon.com/icons/svg/163/163814.svg" alt={props.user}/>

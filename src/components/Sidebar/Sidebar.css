@@ -53,7 +53,9 @@
     margin: 20px 0;
     color: #fff;
     text-decoration: none;
-    
+}
+.Close .SidebarLinks a {
+    display: none;
 }
 .Logo {
     width: auto;
