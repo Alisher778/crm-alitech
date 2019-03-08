@@ -15,8 +15,4 @@ const config = {
   firebase.initializeApp(config);
   firebase.firestore();
 
-// export const students = () => console.log(firestore);
-// export const payments = firebase.firestore.collection('payments');
-// export const attendance = firebase.firestore.collection('attendance');
-// export const courses = firebase.firestore.collection('courses');
 export default firebase;
