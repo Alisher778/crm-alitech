@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import firebase from '../../../config/firebaseConfig';
 
 class AddStudent extends Component {
     state = {}
 
     render() {
+        console.log(firebase)
         return(
             <div>
                 <p><Link to="/students">Back To Students</Link></p>
