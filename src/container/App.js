@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleMenu } from '../reducer/actions';
 import './App.css';
-import StudentsList from '../components/Students/StudentsList/StudentsList';
+import Students from '../components/Students/Students';
 import StudentProfile from '../components/Students/StudentProfile/StudentProfile';
 import AddStudent from '../components/Students/AddStudent/AddStudent';
 
@@ -19,7 +19,7 @@ class App extends Component {
 			    <Sidebar toggle={this.sidebarHandler} status={this.props.sidebar.isOpen}/>
         	<section id="main-content" style={this.props.sidebar.isOpen?styles.w75:null}>
             <Switch>
-              <Route path="/students" exact component={StudentsList}/>
+              <Route path="/students" exact component={Students}/>
               <Route path="/students/add-student" exact component={AddStudent}/>
               <Route path="/students/:id" component={StudentProfile}/>
             </Switch>

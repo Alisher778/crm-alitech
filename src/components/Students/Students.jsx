@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import cssClasses from './StudentsList.css';
-import firebase from '../../../config/firebaseConfig';
-import { studentsList } from '../../../reducer/actions';
+import cssClasses from './Students.css';
+import firebase from '../../config/firebaseConfig';
+import { studentsList } from '../../reducer/actions';
 
 
 const db = firebase.firestore().collection('students');
