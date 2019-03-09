@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import cssClasses from './Students.css';
 import firebase from '../../config/firebaseConfig';
-import { studentsList } from '../../reducer/actions';
+import { getStudentsList } from '../../reducer/actions';
+import SingleStudent from './SingleStudent/SingleStudent';
 
 
 const db = firebase.firestore().collection('students');
@@ -11,7 +12,7 @@ const db = firebase.firestore().collection('students');
 class StudentsList extends Component {
     componentDidMount() {
         db.get().then(data => {
-            const {docs} = data;
+            const {docs, id} = data;
             let studentsData = [];
             docs.forEach(item => studentsData.push(item.data()))
             this.props.addStudents(studentsData);
@@ -21,27 +22,21 @@ class StudentsList extends Component {
         console.log(this.props.students)
         return(
             <div>
-                <Link to="/students/add-student">New Student</Link>
-                <table className={cssClasses.Table}>
-                    <thead>
-                        <tr className={cssClasses.StudentRow}>
-                            <th>Profile</th>
-                            <th>Full Name</th>
-                            <th>Group</th>
-                            <th>Payment</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className={cssClasses.StudentRow}>
-                            <td><img src="https://image.flaticon.com/icons/svg/163/163814.svg" alt="User Name" className={cssClasses.ProfileImg}/></td>
-                            <td><Link to="/students/alisher-musurmonov">Alisher Musurmonov</Link></td>
-                            <td><a href="#group-link">AWS 4</a></td>
-                            <td>12</td>
-                            <td>:</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className={cssClasses.StudentsActions}>
+                    <Link to="/students/add-student" className={cssClasses.AddStudent}>New Student</Link>
+                </div>
+                {this.props.students.map((student, i) => {
+                    const {id, firstName, lastName, email, phone, createdAt} = student;
+                    return( <SingleStudent
+                                key={i}
+                                id={id}   
+                                name={firstName + ' ' + lastName}
+                                email={email}
+                                phone={phone}
+                                joined={createdAt}
+                            />
+                    );
+                })}
             </div>
         );
     }
@@ -55,7 +50,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addStudents: (data) => dispatch(studentsList(data))
+        addStudents: (data) => dispatch(getStudentsList(data))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(StudentsList);

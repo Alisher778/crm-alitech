@@ -8,7 +8,7 @@ const studentProfile = (props) => {
 
     return (
         <div>
-            <a href="#delte">Delete Student</a>
+            <a href="#delet">Delete Student</a>
             <div className={cssClasses.Header}>
                 <div className={cssClasses.HeaderLeft}>
                     <img src="https://image.flaticon.com/icons/svg/163/163814.svg" alt={props.user}/>

@@ -1,0 +1,17 @@
+.StudentsActions {
+    margin: 30px;
+    /* display: flex; */
+}
+.AddStudent {
+    border: 1px solid;
+    color: #4caf50;
+    border-radius: 20px;
+    padding: 5px 20px;
+    text-decoration: none;
+    transition: .3s;
+}
+.AddStudent:hover {
+    background-color: #4caf50;
+    color: #fff;
+    transition: .3s;
+}

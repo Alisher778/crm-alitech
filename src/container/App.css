@@ -3,6 +3,7 @@
 }
 body {
     margin: 0;
+    font-family: 'Cabin', sans-serif;
 }
 main {
     display: flex;
@@ -15,4 +16,8 @@ main section {
     min-height: 100vh;
     padding: 30px;
     transition: 1s;
+}
+.d-flex {
+    display: flex;
+    align-items: center;
 }

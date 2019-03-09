@@ -7,6 +7,13 @@ import './App.css';
 import Students from '../components/Students/Students';
 import StudentProfile from '../components/Students/StudentProfile/StudentProfile';
 import AddStudent from '../components/Students/AddStudent/AddStudent';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Cabin:400,700', ]
+  }
+});
 
 class App extends Component {
   sidebarHandler = () => {

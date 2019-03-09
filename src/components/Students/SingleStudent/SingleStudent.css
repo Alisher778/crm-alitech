@@ -1,0 +1,28 @@
+.Select { width: 30px;}
+.StudentWrapper {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	border: 1px solid #e4e4e4;
+	padding: 5px;
+	margin-bottom: 7px;
+	border-radius: 7px;
+}
+
+.StudentWrapper > div { padding: 3px 5px;}
+.StudentImg { width: 50px}
+.Name {
+	margin-left: 15px;
+	width: 35%;
+	display:flex;
+	flex-direction: column;
+}
+.Phone {min-width: 120px; width: 15%}
+.Phone a{
+	text-decoration: none;
+}
+.Active { color: green; }
+.Status, .Joined, .Course {
+	width: 10%;
+	min-width: 80px;
+}

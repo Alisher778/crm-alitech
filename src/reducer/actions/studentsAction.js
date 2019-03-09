@@ -1,6 +1,6 @@
 import { STUDENTS_LIST } from './actionTypes';
 
-export const studentsList = (data) => {
+export const getStudentsList = (data) => {
     return {
         type: STUDENTS_LIST,
         students: data
