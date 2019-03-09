@@ -1,5 +1,6 @@
 import React from 'react';
 import cssClasses from './SingleStudent.css';
+import avatar from '../../../assets/imgs/avatar.svg';
 
 const singleStudent = (props) => {
     const {name, email, phone, id, joined, router: {history, location:{pathname}}} = props
@@ -7,13 +8,13 @@ const singleStudent = (props) => {
         <div className={cssClasses.StudentWrapper}>
             <input type="checkbox" className={cssClasses.Select}/>
             <img 
-                src="https://image.flaticon.com/icons/svg/1256/1256652.svg" 
+                src={avatar} 
                 alt="student avatar" 
                 className={cssClasses.StudentImg} 
             />
             <div 
                 className={cssClasses.Name} 
-                onClick={() => history.push(pathname+'/'+id, email)}
+                onClick={() => history.push(pathname+'/'+id)}
             >
                 <span>{name}</span>
                 <span className={cssClasses.Email}>{email}</span>
