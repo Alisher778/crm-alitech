@@ -12,9 +12,13 @@ const db = firebase.firestore().collection('students');
 class StudentsList extends Component {
     componentDidMount() {
         db.get().then(data => {
-            const {docs, id} = data;
+            const {docs} = data;
+            console.log(data.id)
             let studentsData = [];
-            docs.forEach(item => studentsData.push(item.data()))
+            docs.forEach(item => {
+                let dataWithId = {id: item.id,...item.data()}
+                studentsData.push(dataWithId)
+            })
             this.props.addStudents(studentsData);
         })
     }
@@ -34,6 +38,7 @@ class StudentsList extends Component {
                                 email={email}
                                 phone={phone}
                                 joined={createdAt}
+                                router={this.props}
                             />
                     );
                 })}

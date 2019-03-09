@@ -2,6 +2,7 @@ import React from 'react';
 import cssClasses from './SingleStudent.css';
 
 const singleStudent = (props) => {
+    const {name, email, phone, id, joined, router: {history, location:{pathname}}} = props
     return (
         <div className={cssClasses.StudentWrapper}>
             <input type="checkbox" className={cssClasses.Select}/>
@@ -10,12 +11,15 @@ const singleStudent = (props) => {
                 alt="student avatar" 
                 className={cssClasses.StudentImg} 
             />
-            <div className={cssClasses.Name}>
-                <span>{props.name}</span>
-                <span className={cssClasses.Email}>{props.email}</span>
+            <div 
+                className={cssClasses.Name} 
+                onClick={() => history.push(pathname+'/'+id, email)}
+            >
+                <span>{name}</span>
+                <span className={cssClasses.Email}>{email}</span>
             </div>
             <div className={cssClasses.Phone}>
-                <a href={`tel:+${props.phone}`}>+{props.phone}</a>
+                <a href={`tel:+${phone}`}>+{phone}</a>
             </div>
             <div className={cssClasses.Status}>
                 <span className={cssClasses.Active}>Active</span>
@@ -24,7 +28,7 @@ const singleStudent = (props) => {
                 <span>HTML/CSS</span>
             </div>
             <div className={cssClasses.Joined}>
-                <span>{props.joined}</span>
+                <span>{joined}</span>
             </div>
         </div>
     );
