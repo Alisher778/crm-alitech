@@ -14,7 +14,7 @@ class StudentProfile extends Component {
         const {email, phone, firstName, lastName, createdAt, address} = currentUser;
         console.log('[cureentUser] =>', currentUser)
         return (
-            <div>
+            <div className={cssClasses.ProfileWrapper}>
                 <div className={cssClasses.LeftContainer}>
                     <img src={avatar} alt={firstName} className={cssClasses.Avatar}/>
                     <h3>{firstName + ' ' + lastName}</h3>

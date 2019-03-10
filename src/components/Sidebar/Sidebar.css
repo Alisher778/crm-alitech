@@ -3,8 +3,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    width: 25%;
-    max-width: 300px;
+    width: 250px;
     height: 100vh;
     position: fixed;
     left: 0;
@@ -14,7 +13,6 @@
 }
 .Open {
     transition: 0.6s;
-    width: 25%;
 
 }
 .Open .NavLinks {

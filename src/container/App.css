@@ -21,3 +21,8 @@ main section {
     display: flex;
     align-items: center;
 }
+
+.w75 {
+    margin-left: 250px;
+    transition:0.2;
+}

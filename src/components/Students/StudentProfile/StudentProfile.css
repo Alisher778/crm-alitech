@@ -1,39 +1,6 @@
-.Header {
-    width: 100%;
-    border: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.LeftContainer {
+    border: 1px solid; 
 }
-.HeaderLeft {
-    flex: 1 33%;
-}
-.HeaderLeft img {
-    width: 100%;
-}
-.HeaderRight {
-    flex: 1 66%;
-}
-
-@media screen and (max-width: 1024px) {
-    .HeaderLeft, .HeaderRight {
-        flex: 1 50%;
-    }
-} 
-
-@media screen and (max-width: 768px) {
-    .Header {
-        flex-direction: column;
-    }
-    .HeaderLeft, .HeaderRight {
-        flex: 1 100%;
-    }
-} 
-
-
-
-
-
 .Avatar {
     width: 100px;
 }
