@@ -17,6 +17,7 @@ main section {
     padding: 30px;
     transition: 1s;
     background-color: #f4f8f9;
+    font-size: 14px;
 }
 .d-flex {
     display: flex;

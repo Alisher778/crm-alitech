@@ -15,3 +15,30 @@
     color: #fff;
     transition: .3s;
 }
+.TabelHeading {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin-bottom: 9px;
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    background: #fff;
+}
+.Input {
+    width: 30px;
+}
+.Photo {
+    width: 50px;
+}
+.Info {
+    width: 35%;
+    margin-left: 20px;
+}
+.Phone {
+    width: 15%;
+    min-width: 120px;
+}
+.Status, .Joined, .Course {
+    width: 10%;
+    min-width: 80px;
+}

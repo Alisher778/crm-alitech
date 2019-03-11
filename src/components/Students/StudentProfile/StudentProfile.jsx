@@ -11,7 +11,7 @@ class StudentProfile extends Component {
     render() {
         const userId = this.props.match.params.id;
         const currentUser = this.props.students.find(item => item.id === userId);
-        const {email, phone, firstName, lastName, createdAt, address} = currentUser;
+        const {email, phone, firstName, lastName, createdAt, address, status} = currentUser;
         console.log('[cureentUser] =>', currentUser)
         return (
             <div className={cssClasses.ProfileWrapper}>
@@ -19,6 +19,10 @@ class StudentProfile extends Component {
                     <div className={cssClasses.BasicInfo}>
                         <img src={avatar} alt={firstName} className={cssClasses.Avatar}/>
                         <h3>{firstName + ' ' + lastName}</h3>
+                        <div 
+                            className={status === 'active'?cssClasses.ActiveStatus:cssClasses.InactiveStatus}>
+                            {status}
+                        </div>
                     </div>
                     <div className={cssClasses.ContactInformation}>
                         <div>
@@ -39,7 +43,9 @@ class StudentProfile extends Component {
                         </div>
                     </div>
                 </div>
-                <div className={cssClasses.RightContainer}></div>
+                <div className={cssClasses.RightContainer}>
+                
+                </div>
             </div>
         );
     }

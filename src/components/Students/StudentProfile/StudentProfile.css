@@ -1,7 +1,7 @@
 .LeftContainer {
     border: 1px solid #dbdbdb;
     width: 30%;
-    max-width: 350px;
+    max-width: 300px;
     padding: 15px;
     min-width: 280px;
     color: #0b265c;
@@ -10,6 +10,25 @@
 }
 .Avatar {
     width: 100px;
+}
+
+.ActiveStatus {
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 20px;
+}
+.InactiveStatus {
+    color: #fff;
+    background-color: #E91E63;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 20px;
 }
 .BasicInfo {
     text-align: center;

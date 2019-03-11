@@ -29,6 +29,15 @@ class StudentsList extends Component {
                 <div className={cssClasses.StudentsActions}>
                     <Link to="/students/add-student" className={cssClasses.AddStudent}>New Student</Link>
                 </div>
+                <div className={cssClasses.TabelHeading}>
+                    <input type="checkbox" className={cssClasses.Input} />
+                    <b className={cssClasses.Photo}>Photo</b>
+                    <b className={cssClasses.Info}>Student Info</b>
+                    <b className={cssClasses.Phone}>Phone</b>
+                    <b className={cssClasses.Status}>Status</b>
+                    <b className={cssClasses.Course}>Course</b>
+                    <b className={cssClasses.Joined}>Joined</b>
+                </div>
                 {this.props.students.map((student, i) => {
                     const {id, firstName, lastName, email, phone, createdAt} = student;
                     return( <SingleStudent

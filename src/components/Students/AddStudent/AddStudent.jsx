@@ -8,6 +8,7 @@ class AddStudent extends Component {
               lastName: '', 
               phone: '', 
               email: '', 
+              address: '',
               createdAt: Date.now(), 
               updatedAt: Date.now()
             }
@@ -56,6 +57,12 @@ class AddStudent extends Component {
                             type="number" 
                             name="phone" 
                             placeholder="Phone"
+                            onChange={(event) => this.userInputHandler(event)}
+                        />
+                        <input 
+                            type="text" 
+                            name="address" 
+                            placeholder="Address"
                             onChange={(event) => this.userInputHandler(event)}
                         />
                         <button onClick={(event) => this.formSubmitHandler(event)}>Add Student</button>
