@@ -16,24 +16,25 @@ class StudentProfile extends Component {
         return (
             <div className={cssClasses.ProfileWrapper}>
                 <div className={cssClasses.LeftContainer}>
-                    <img src={avatar} alt={firstName} className={cssClasses.Avatar}/>
-                    <h3>{firstName + ' ' + lastName}</h3>
-                    <div className="ContactInformation">
-                        <h5>Contact Information</h5>
+                    <div className={cssClasses.BasicInfo}>
+                        <img src={avatar} alt={firstName} className={cssClasses.Avatar}/>
+                        <h3>{firstName + ' ' + lastName}</h3>
+                    </div>
+                    <div className={cssClasses.ContactInformation}>
                         <div>
-                            <i>Phone Number:</i>
-                            <div><a href={'tel:+'+phone}>+{phone}</a></div>
+                            <span>Phone Number:</span>
+                            <p><a href={'tel:+'+phone}>+{phone}</a></p>
                         </div>
                         <div>
-                            <i>Eamil Address:</i>
-                            <div><a href={'mailto:'+email}>{email}</a></div>
+                            <span>Eamil Address:</span>
+                            <p><a href={'mailto:'+email}>{email}</a></p>
                         </div>
                         <div>
-                            <i>Address:</i>
-                            <div>{address}</div>
+                            <span>Address:</span>
+                            <p>{address}</p>
                         </div>
                         <div>
-                            <i>Joined School:</i>
+                            <span>Joined School:</span>
                             <div>{createdAt}</div>
                         </div>
                     </div>

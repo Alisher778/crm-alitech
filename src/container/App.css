@@ -16,6 +16,7 @@ main section {
     min-height: 100vh;
     padding: 30px;
     transition: 1s;
+    background-color: #f4f8f9;
 }
 .d-flex {
     display: flex;
