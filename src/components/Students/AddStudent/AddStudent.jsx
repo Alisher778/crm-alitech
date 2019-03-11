@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from '../../../config/firebaseConfig';
+import cssClasses from './AddStudent.css';
 const db = firebase.firestore().collection('students');
 
 class AddStudent extends Component {
@@ -30,7 +31,9 @@ class AddStudent extends Component {
         console.log(this.state)
         return(
             <div>
-                <p><Link to="/students">Back To Students</Link></p>
+                <div className={cssClasses.ButtonWrapper}>
+                    <Link className={cssClasses.BackButton} to="/students">Go Back</Link>
+                </div>
                 <h2>Add New Student</h2>
                 <form>
                     <div id="bio">

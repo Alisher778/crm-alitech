@@ -10,6 +10,7 @@ import SingleStudent from './SingleStudent/SingleStudent';
 const db = firebase.firestore().collection('students');
 
 class StudentsList extends Component {
+    state = {checked: false}
     componentDidMount() {
         db.get().then(data => {
             const {docs} = data;
@@ -22,15 +23,25 @@ class StudentsList extends Component {
             this.props.addStudents(studentsData);
         })
     }
+    selectAllHandler = () => {
+        this.setState(prevState => ({checked: !prevState.checked}))
+    }
+
+    
     render() {
         console.log(this.props.students)
+        console.log(this.state)
         return(
             <div>
                 <div className={cssClasses.StudentsActions}>
                     <Link to="/students/add-student" className={cssClasses.AddStudent}>New Student</Link>
                 </div>
                 <div className={cssClasses.TabelHeading}>
-                    <input type="checkbox" className={cssClasses.Input} />
+                    <input 
+                        type="checkbox" 
+                        className={cssClasses.Input} 
+                        onChange={() => this.selectAllHandler()}
+                    />
                     <b className={cssClasses.Photo}>Photo</b>
                     <b className={cssClasses.Info}>Student Info</b>
                     <b className={cssClasses.Phone}>Phone</b>
@@ -48,6 +59,7 @@ class StudentsList extends Component {
                                 phone={phone}
                                 joined={createdAt}
                                 router={this.props}
+                                checked={this.state.checked}
                             />
                     );
                 })}

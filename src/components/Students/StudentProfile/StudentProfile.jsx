@@ -15,6 +15,9 @@ class StudentProfile extends Component {
         console.log('[cureentUser] =>', currentUser)
         return (
             <div className={cssClasses.ProfileWrapper}>
+                <div className={cssClasses.ButtonWrapper}>
+                    <Link className={cssClasses.BackButton} to="/students">Go Back</Link>
+                </div>
                 <div className={cssClasses.LeftContainer}>
                     <div className={cssClasses.BasicInfo}>
                         <img src={avatar} alt={firstName} className={cssClasses.Avatar}/>

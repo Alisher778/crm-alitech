@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cssClasses from './SingleStudent.css';
 import avatar from '../../../assets/imgs/avatar.svg';
 
 const singleStudent = (props) => {
-    const {name, email, phone, id, joined, router: {history, location:{pathname}}} = props
+    const {name, email, phone,checked, id, joined, router: {history, location:{pathname}}} = props;
     return (
         <div className={cssClasses.StudentWrapper}>
-            <input type="checkbox" className={cssClasses.Select}/>
+           <input 
+                type="checkbox" 
+                className={cssClasses.Select}
+                defaultChecked={checked}
+            />
             <img 
                 src={avatar} 
                 alt="student avatar" 
