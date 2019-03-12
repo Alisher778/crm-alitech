@@ -10,6 +10,7 @@ const db = firebase.firestore().collection('courses');
 class AddCourse extends Component {
     state = {
         title: '',
+        price:'',
         lessonStarts: null,
         lessonEnds: null,
         startDate: null,
@@ -52,6 +53,14 @@ class AddCourse extends Component {
                             type="text" 
                             name="title" 
                             placeholder="Title"
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                    </div>
+                    <div className={cssClasses.InputWrapper}>
+                        <input 
+                            type="text" 
+                            name="price" 
+                            placeholder="Price"
                             onChange={(e) => this.handleChange(e)}
                         />
                     </div>

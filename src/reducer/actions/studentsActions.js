@@ -1,8 +1,8 @@
-import { STUDENTS_LIST } from './actionTypes';
+import { FETCH_STUDENTS } from './actionTypes';
 
 export const getStudentsList = (data) => {
     return {
-        type: STUDENTS_LIST,
+        type: FETCH_STUDENTS,
         students: data
     }
 }
