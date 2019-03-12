@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import cssClasses from './AddCourse.css';
+import firebase from '../../../config/firebaseConfig';
+
+const db = firebase.firestore().collection('courses');
 
 class AddCourse extends Component {
     state = {
@@ -17,13 +20,16 @@ class AddCourse extends Component {
     }
      
     handleChange = (e) => {
-        const {name, value, type} = e.target;
+        const {name, value} = e.target;
         this.setState({[name]:value})
     }
 
     formHandler = (e) => {
         e.preventDefault();
-       
+        db.add(this.state).then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err))
 
     }
     checkboxHandler = (e) => {
