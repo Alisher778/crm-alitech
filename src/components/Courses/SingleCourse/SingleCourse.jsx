@@ -15,7 +15,7 @@ const singleCourse = (props) => {
         studentsNumber
     } = props;
     return (
-        <div>
+        <div className={cssClasses.CourseWrapper}>
             <div className={cssClasses.Left}>
                 <img src={img} alt={title}/>
             </div>

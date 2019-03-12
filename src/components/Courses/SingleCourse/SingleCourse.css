@@ -1,0 +1,37 @@
+.CourseWrapper {
+    background-color: #fff;
+    border: 1px solid;
+    padding: 7px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.Left {
+    width: auto;
+}
+.Left img {
+    width: 120px;
+}
+.Right {
+    width: 70%;
+    text-align: left;
+}
+.Title {
+    font-size: 24px;
+}
+.LessonInfo {
+    font-size: initial;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.Details {
+    font-size: initial;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
