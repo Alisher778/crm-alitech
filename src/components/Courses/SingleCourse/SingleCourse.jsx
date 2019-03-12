@@ -22,8 +22,8 @@ const singleCourse = (props) => {
             <div className={cssClasses.Right}>
                 <h3 className={cssClasses.Title}>{title}</h3>
                 <div className={cssClasses.LessonInfo}>
-                    <span>{lessonStarts}</span>
-                    <span>{lessonEnds}</span>
+                    <span>{new Date(lessonStarts).toLocaleTimeString()}</span>
+                    <span>{new Date(lessonEnds).toLocaleTimeString()}</span>
                     <span>{studentsNumber}</span>
                 </div>
                 <div className={cssClasses.Details}>

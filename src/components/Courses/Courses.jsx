@@ -22,38 +22,27 @@ class Courses extends Component {
     }
     render() {
         console.log(this.props.courses)
-        const { 
-            id,
-            img, 
-            price, 
-            title, 
-            status, 
-            duration, 
-            startDate, 
-            lessonEnds, 
-            lessonStarts, 
-            studentsNumber
-        } = this.props.courses;
         return (
             <div>
                  <Link to="/courses/add-course">Add Course</Link>
                 <h1>Courses</h1>
                 {this.props.courses.map((item,i) => {
-                    return(
-                        <SingleCourse 
-                            key={id}
-                            id={id}
-                            title={title}
-                            img={img} 
-                            price={price} 
-                            status={status} 
-                            startDate={startDate} 
-                            lessonEnds={lessonEnds} 
-                            lessonStarts={lessonStarts} 
-                            duration={duration} 
-                            studentsNumber={studentsNumber}
-                        />
-                    )
+                    console.log(item)
+                        return(
+                            <SingleCourse 
+                                key={item.id}
+                                id={item.id}
+                                title={item.title}
+                                img={item.img} 
+                                price={item.price} 
+                                status={item.status} 
+                                startDate={item.startDate} 
+                                lessonEnds={item.lessonEnds} 
+                                lessonStarts={item.lessonStarts} 
+                                duration={item.duration} 
+                                studentsNumber={item.studentsNumber}
+                            />
+                        )
                 })}
             </div>
         );

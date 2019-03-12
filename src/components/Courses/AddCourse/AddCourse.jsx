@@ -43,6 +43,7 @@ class AddCourse extends Component {
     }
     
     render() {
+        console.log(this.state)
         return (
             <div>
                 <Link to="/courses/">Back Courses</Link>
@@ -67,7 +68,7 @@ class AddCourse extends Component {
                     <div className={cssClasses.InputWrapper}>
                         <DatePicker
                             selected={this.state.lessonStarts}
-                            onChange={(data) => this.setState({lessonStarts: data})}
+                            onChange={(data) => this.setState({lessonStarts: Date.parse(data)})}
                             showTimeSelect
                             showTimeSelectOnly
                             timeIntervals={30}
@@ -80,7 +81,7 @@ class AddCourse extends Component {
                     <div className={cssClasses.InputWrapper}>
                         <DatePicker
                            selected={this.state.lessonEnds}
-                           onChange={(data) => this.setState({lessonEnds: data})}
+                           onChange={(data) => this.setState({lessonEnds: Date.parse(data)})}
                            showTimeSelect
                            showTimeSelectOnly
                            timeIntervals={30}
