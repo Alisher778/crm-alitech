@@ -9,15 +9,16 @@ const db = firebase.firestore().collection('courses');
 
 class AddCourse extends Component {
     state = {
-        title: '',
+        info: '',
         price:'',
+        title: '',
+        status: '',
+        whatDay: [],
+        endDate: null,
+        duration: '',
         lessonStarts: null,
         lessonEnds: null,
         startDate: null,
-        endDate: null,
-        duration: '',
-        whatDay: [],
-        status: ''
     }
      
     handleChange = (e) => {
@@ -128,6 +129,13 @@ class AddCourse extends Component {
                         <input type="radio" value="active" name="status"  onChange={(e) => this.handleChange(e)}/> Active
                         <input type="radio" value="inactive" name="status"  onChange={(e) => this.handleChange(e)}/> Inactive
                         <input type="radio" value="canceled" name="status"  onChange={(e) => this.handleChange(e)}/> Canceled
+                    </div>
+                    <div className={cssClasses.InputWrapper}>
+                        <textarea 
+                            name="info" 
+                            placeholder="Brief about course"
+                            onChange={(e) => this.handleChange(e)}
+                        />
                     </div>
                     <div>
                         <button>Create</button>

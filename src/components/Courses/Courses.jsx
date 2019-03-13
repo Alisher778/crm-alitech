@@ -20,6 +20,9 @@ class Courses extends Component {
             this.props.addToCourses(courseData);
         })
     }
+    courseLinkHandler = (id) => {
+        this.props.history.push('/courses/'+id);
+    }
     render() {
         console.log(this.props.courses)
         return (
@@ -41,6 +44,7 @@ class Courses extends Component {
                                 lessonStarts={item.lessonStarts} 
                                 duration={item.duration} 
                                 studentsNumber={item.studentsNumber}
+                                courseLink={this.courseLinkHandler}
                             />
                         )
                 })}

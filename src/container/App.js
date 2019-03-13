@@ -11,6 +11,7 @@ import AddStudent from '../components/Students/AddStudent/AddStudent';
 // *******  Courses Component **************
 import Courses from '../components/Courses/Courses';
 import AddCourse from '../components/Courses/AddCourse/AddCourse';
+import CourseProfile from '../components/Courses/CourseProfile/CourseProfile';
 
 import WebFont from 'webfontloader';
 import cssClasses from './App.css';
@@ -34,6 +35,7 @@ class App extends Component {
             <Switch>
               <Route path="/courses" exact component={Courses}/>
               <Route path="/courses/add-course" exact component={AddCourse}/>
+              <Route path="/courses/:id" component={CourseProfile}/>
               <Route path="/students" exact component={Students}/>
               <Route path="/students/add-student" exact component={AddStudent}/>
               <Route path="/students/:id" component={StudentProfile}/>

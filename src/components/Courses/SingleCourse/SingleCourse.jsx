@@ -10,12 +10,14 @@ const singleCourse = (props) => {
         status, 
         duration, 
         startDate, 
+        courseLink,
         lessonEnds, 
         lessonStarts, 
         studentsNumber
     } = props;
+    console.log(id)
     return (
-        <div className={cssClasses.CourseWrapper}>
+        <div className={cssClasses.CourseWrapper} onClick={() => courseLink(id)}>
             <div className={cssClasses.Left}>
                 <img src={img} alt={title}/>
             </div>
