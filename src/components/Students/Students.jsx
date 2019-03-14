@@ -29,8 +29,6 @@ class StudentsList extends Component {
 
     
     render() {
-        console.log(this.props.students)
-        console.log(this.state)
         return(
             <div>
                 <div className={cssClasses.StudentsActions}>

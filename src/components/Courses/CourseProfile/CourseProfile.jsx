@@ -26,7 +26,6 @@ class CourseProfile extends Component {
             
     }   
     render() {
-        console.log(this.props, this.state)
         const {
             id,
             img, 
@@ -56,8 +55,8 @@ class CourseProfile extends Component {
                     </div>
                     <div className="StatusTime">
                         <span className="Status">{status}</span>
-                        <span className="LessonStarts">{lessonStarts}</span>
-                        <span className="LessonEnds">{lessonEnds}</span>
+                        <span className="LessonStarts">{new Date(lessonStarts).toLocaleTimeString()}</span>
+                        <span className="LessonEnds">{new Date(lessonEnds).toLocaleTimeString()}</span>
                     </div>
                     <div className="Days">
                         <span className="WhatDay">{whatDay}</span>
@@ -65,8 +64,8 @@ class CourseProfile extends Component {
                     </div>
 
                     <div className="CourseLength">
-                        <span className="StartDate">{startDate}</span>
-                        <span className="EndDate">{endDate}</span>
+                        <span className="StartDate">{new Date(startDate).toLocaleDateString()} | </span>
+                        <span className="EndDate">{new Date(endDate).toLocaleDateString()} | </span>
                         <span className="Duration">{duration}</span>
                     </div>
 

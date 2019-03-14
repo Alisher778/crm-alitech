@@ -15,7 +15,6 @@ const singleCourse = (props) => {
         lessonStarts, 
         studentsNumber
     } = props;
-    console.log(id)
     return (
         <div className={cssClasses.CourseWrapper} onClick={() => courseLink(id)}>
             <div className={cssClasses.Left}>
@@ -30,7 +29,7 @@ const singleCourse = (props) => {
                 </div>
                 <div className={cssClasses.Details}>
                     <span>{status}</span>
-                    <span>{startDate}</span>
+                    <span>{new Date(startDate).toLocaleDateString()}</span>
                     <span>{duration}</span>
                     <span>{price}</span>
                 </div>

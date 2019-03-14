@@ -28,7 +28,6 @@ class AddStudent extends Component {
             .catch(err => console.log(err))
     }
     render() {
-        console.log(this.state)
         return(
             <div>
                 <div className={cssClasses.ButtonWrapper}>

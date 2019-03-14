@@ -25,13 +25,11 @@ class Courses extends Component {
         this.props.history.push('/courses/'+id);
     }
     render() {
-        console.log(this.props.courses)
         return (
             <div>
                  <Link to="/courses/add-course">Add Course</Link>
                 <h1>Courses</h1>
                 {this.props.courses.map((item,i) => {
-                    console.log(item)
                         return(
                             <SingleCourse 
                                 key={item.id}

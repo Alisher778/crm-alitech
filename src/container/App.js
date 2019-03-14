@@ -27,7 +27,6 @@ class App extends Component {
     this.props.sidebarToggle(!this.props.sidebar.isOpen);
   }
   render() {
-    console.log(this.props.sidebar)
     return (
         <main>
 			    <Sidebar toggle={this.sidebarHandler} status={this.props.sidebar.isOpen}/>
