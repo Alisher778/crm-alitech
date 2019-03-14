@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import firebase from '../../../config/firebaseConfig';
 import cssClasses from './CourseProfile.css';
@@ -6,26 +7,26 @@ import cssClasses from './CourseProfile.css';
 const db = firebase.firestore().collection('courses');
 
 class CourseProfile extends Component {
-    state = {studentsList: [{id: null, name: 'Alisher'}]}
+    state = {studentsList:[{id: null}]}
     componentDidMount() {
         const {id} = this.props.match.params;
-        db.doc(id).get().then(doc => {
-            console.log(doc.data())
-            this.setState({id: doc.id, ...doc.data()})
-            console.log(doc.data().studentsList[0])
-        }).catch(err => console.log(err));
+        this.setState({ 
+            ...this.props.courses.filter(item => item.id === id)[0]
+        })
     }
 
     removeUserHandler = (id) => {
-        this.setState(prevState => {
-            console.log(prevState)
-            return { studentsList: prevState.studentsList.filter(item => item.id !== id)}
-        });
-        console.log(this.state.studentsList.filter(item => item.id !== id))
-        db.doc(this.state.id).update({studentsList: this.state.studentsList.filter(item => item.id !== id)})
+        const isConfirm = window.confirm('Are you really want to remove the student?');
+        if(isConfirm) {
+            this.setState(prevState => {
+                return { studentsList: prevState.studentsList.filter(item => item.id !== id)}
+            });
+            db.doc(this.state.id).update({studentsList: this.state.studentsList.filter(item => item.id !== id)})
+        }
             
     }   
     render() {
+        console.log(this.props, this.state)
         const {
             id,
             img, 
@@ -100,4 +101,10 @@ class CourseProfile extends Component {
     }
 }
 
-export default CourseProfile;
+const mapStateToProps = state => {
+    return {
+        courses: state.courses.courses
+    }
+}
+
+export default connect(mapStateToProps)(CourseProfile);
