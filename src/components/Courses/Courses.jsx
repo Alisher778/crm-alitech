@@ -18,7 +18,8 @@ class Courses extends Component {
             })
             this.setState({courses: courseData})
             this.props.addToCourses(courseData);
-        })
+        });
+
     }
     courseLinkHandler = (id) => {
         this.props.history.push('/courses/'+id);
