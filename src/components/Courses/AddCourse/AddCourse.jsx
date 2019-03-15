@@ -25,7 +25,8 @@ const initialState = {
             studentsList: []
         },
         msg: '',
-        students: []
+        students: [],
+        selectedStudents: []
     }
 
 class AddCourse extends Component {
@@ -62,8 +63,29 @@ class AddCourse extends Component {
         
     }
 
-    addStudentHandler = () => {
-        this.setState({course: {studentsList: [...this.state.studentsList]}})
+    addStudentHandler = (e) => {
+        const currentInput = e.target;
+        const {checked, value, dataset: {studentname, studentimg, studentstatus, studentenrolled}} =  this[currentInput.value];
+        
+        // const isExist = this.state.selectedStudents.filter(student => student.id === value);
+        const newStudent = {
+            id: value,
+            img: studentimg,
+            name: studentname,
+            status: studentstatus,
+            enrolled: studentenrolled
+        }
+
+        if(checked) {
+            this.setState(prevState => {
+                return {selectedStudents: [...prevState.selectedStudents, newStudent]}
+            })
+        } else {
+            this.setState(prevState => {
+                return {selectedStudents: prevState.selectedStudents.filter(student => student.id !== value)}
+            })
+        }
+
     }
     
     render() {
@@ -80,7 +102,7 @@ class AddCourse extends Component {
             startDate,
             studentsList
         } = this.state.course;
-        console.log(this.state.students)
+        console.log(this.state.selectedStudents)
         return (
             <div>
                 <div className={cssClasses.CourseActions}>
@@ -203,16 +225,22 @@ class AddCourse extends Component {
                                     <input 
                                         type="checkbox" 
                                         value={student.id}
-                                        studentname={student.firstName + ' ' + student.lastName}
-                                        studentimg={student.img} 
-                                        studentstatus={student.status}
-                                        studentenrolled={student.createdAt}
+                                        data-studentname={student.firstName + ' ' + student.lastName}
+                                        data-studentimg={student.img} 
+                                        data-studentstatus={student.status}
+                                        data-studentenrolled={student.createdAt}
+                                        className="addStudent"
+                                        onChange={(e) => this.addStudentHandler(e)}
+                                        ref={(ref) => this[student.id] = ref}
                                     />
                                     <h3>{student.firstName + ' ' + student.lastName}</h3>
                                     <span>{student.status}</span>
                                 </li>
                            );
                         })}
+                        <li>
+                            <button onClick={() => this.addStudentHandler()}>Add To Course</button>
+                        </li>
                     </ul>
                 </div>
             </div>
