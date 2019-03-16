@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import cssClasses from './SingleStudent.css';
 import avatar from '../../../assets/imgs/avatar.svg';
 
 const singleStudent = (props) => {
+    const [toggle, setToggle] = useState(false)
     const {name, email, phone,checked, id, joined, router: {history, location:{pathname}}} = props;
     return (
         <div className={cssClasses.StudentWrapper}>
@@ -34,6 +36,13 @@ const singleStudent = (props) => {
             </div>
             <div className={cssClasses.Joined}>
                 <span>{joined}</span>
+            </div>
+            <div className={cssClasses.StudentActions}>
+                <button onClick={() => setToggle(!toggle)}>:</button>
+                <div style={{display: toggle?'block':'none'}}>
+                    <Link to={'/students/'+props.id+'/edit'}>Edit</Link>
+                    <span onClick={() => props.removestudent(props.id)}>Delete</span>
+                </div>
             </div>
         </div>
     );

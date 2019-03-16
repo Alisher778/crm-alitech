@@ -5,5 +5,5 @@ export {
 
 } from './actionTypes';
 export { toggleMenu } from './sidebarActions';
-export { getStudentsList } from './studentsActions';
+export { getStudentsList, removeStudent } from './studentsActions';
 export { fetchCourses, initialDataFetch } from './coursesActions';

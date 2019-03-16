@@ -13,6 +13,8 @@ class AddStudent extends Component {
                     email: '', 
                     address: '',
                     status: 'active',
+                    payments: [],
+                    attendances: [],
                     createdAt: Date.now(), 
                     updatedAt: Date.now(),
                     courseId: '',

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import cssClasses from './Students.css';
 import firebase from '../../config/firebaseConfig';
-import { getStudentsList } from '../../reducer/actions';
+import { getStudentsList, removeStudent } from '../../reducer/actions';
 import SingleStudent from './SingleStudent/SingleStudent';
 
 
 const db = firebase.firestore().collection('students');
 
 class StudentsList extends Component {
-    state = {checked: false}
+    state = {checked: false, msg: ''}
     componentDidMount() {
         db.get().then(data => {
             const {docs} = data;
@@ -21,16 +21,34 @@ class StudentsList extends Component {
                 studentsData.push(dataWithId)
             })
             this.props.addStudents(studentsData);
-        })
+        });
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        console.log('====>  ', props)
+    }
+
+    componentDidUpdate(prevProps) {
+       if(this.props.students.length !== prevProps.students.length) {
+           console.log('Props are UPDATED')
+       }
     }
     selectAllHandler = () => {
         this.setState(prevState => ({checked: !prevState.checked}))
     }
 
+    removeStudentHandler = (id) => {
+        this.props.removeSelectedStudent(id);
+        db.doc(id).delete()
+            .then(() => this.setState({msg: 'User has been removed'}))
+            .catch((err) => this.setState({msg: err.message}))
+    }
     
     render() {
+        console.log(this.props.students)
         return(
             <div>
+                <h4>{this.state.msg}</h4>
                 <div className={cssClasses.StudentsActions}>
                     <Link to="/students/add-student" className={cssClasses.AddStudent}>New Student</Link>
                 </div>
@@ -58,6 +76,7 @@ class StudentsList extends Component {
                                 joined={createdAt}
                                 router={this.props}
                                 checked={this.state.checked}
+                                removestudent={this.removeStudentHandler}
                             />
                     );
                 })}
@@ -74,7 +93,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addStudents: (data) => dispatch(getStudentsList(data))
+        addStudents: (data) => dispatch(getStudentsList(data)),
+        removeSelectedStudent: (id) => dispatch(removeStudent(id))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(StudentsList);
