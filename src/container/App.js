@@ -8,6 +8,7 @@ import './App.css';
 import Students from '../components/Students/Students';
 import StudentProfile from '../components/Students/StudentProfile/StudentProfile';
 import AddStudent from '../components/Students/AddStudent/AddStudent';
+import EditStudent from '../components/Students/EditStudent/EditStudent';
 // *******  Courses Component **************
 import Courses from '../components/Courses/Courses';
 import AddCourse from '../components/Courses/AddCourse/AddCourse';
@@ -37,6 +38,7 @@ class App extends Component {
               <Route path="/courses/:id" component={CourseProfile}/>
               <Route path="/students" exact component={Students}/>
               <Route path="/students/add-student" exact component={AddStudent}/>
+              <Route path="/students/:id/edit" component={EditStudent}/>
               <Route path="/students/:id" component={StudentProfile}/>
             </Switch>
           </section>

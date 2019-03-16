@@ -1,0 +1,12 @@
+.ButtonWrapper {
+    margin: 20px;
+}
+.BackButton {
+    text-decoration: none;
+    border: 1px solid #085ea2;
+    padding: 2px 10px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #085ea2;
+    cursor: pointer;
+}

@@ -7,7 +7,6 @@ const studentsReducer = (state=initialState, action) => {
             return {...state, students: action.students};
         }
         case REMOVE_STUDENT: {
-            console.log('Ura', state.students.filter((item) => item.id !== action.id), state)
             return {    
                 ...state, 
                 students: state.students.filter((item) => item.id !== action.id)
