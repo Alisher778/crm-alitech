@@ -39,6 +39,7 @@ class AddCourse extends Component {
             this.setState({students: newStudents})
         })
     }
+
     handleChange = (e) => {
         const {name, value} = e.target;
         this.setState({course: {...this.state.course, [name]:value}})
@@ -46,13 +47,12 @@ class AddCourse extends Component {
 
     formHandler = (e) => {
         e.preventDefault();
-        db.add(this.state.course).then(res => {
+        db.add({...this.state.course, studentsList: this.state.selectedStudents}).then(res => {
             this.setState({...initialState, msg: 'Course has been created successfully'});
             const form = document.getElementById('coursesForm');
             form.reset();
         })
         .catch(err => console.log(err))
-
     }
     checkboxHandler = (e) => {
         const form = document.getElementById('coursesForm');
@@ -63,30 +63,6 @@ class AddCourse extends Component {
         
     }
 
-    addStudentHandler = (e) => {
-        const currentInput = e.target;
-        const {checked, value, dataset: {studentname, studentimg, studentstatus, studentenrolled}} =  this[currentInput.value];
-        
-        // const isExist = this.state.selectedStudents.filter(student => student.id === value);
-        const newStudent = {
-            id: value,
-            img: studentimg,
-            name: studentname,
-            status: studentstatus,
-            enrolled: studentenrolled
-        }
-
-        if(checked) {
-            this.setState(prevState => {
-                return {selectedStudents: [...prevState.selectedStudents, newStudent]}
-            })
-        } else {
-            this.setState(prevState => {
-                return {selectedStudents: prevState.selectedStudents.filter(student => student.id !== value)}
-            })
-        }
-
-    }
     
     render() {
         const {
@@ -102,7 +78,7 @@ class AddCourse extends Component {
             startDate,
             studentsList
         } = this.state.course;
-        console.log(this.state.selectedStudents)
+        console.log(this.state)
         return (
             <div>
                 <div className={cssClasses.CourseActions}>
@@ -213,35 +189,6 @@ class AddCourse extends Component {
                             <button>Create</button>
                         </div>
                     </form>
-                </div>
-                <div className="AddStudents">
-                    <div className="StudentsHeader">
-                        <h2>All Students</h2>
-                    </div>
-                    <ul className="StudentsList">
-                        {this.state.students.map((student, i) => {
-                           return( 
-                                <li key={student.id}>
-                                    <input 
-                                        type="checkbox" 
-                                        value={student.id}
-                                        data-studentname={student.firstName + ' ' + student.lastName}
-                                        data-studentimg={student.img} 
-                                        data-studentstatus={student.status}
-                                        data-studentenrolled={student.createdAt}
-                                        className="addStudent"
-                                        onChange={(e) => this.addStudentHandler(e)}
-                                        ref={(ref) => this[student.id] = ref}
-                                    />
-                                    <h3>{student.firstName + ' ' + student.lastName}</h3>
-                                    <span>{student.status}</span>
-                                </li>
-                           );
-                        })}
-                        <li>
-                            <button onClick={() => this.addStudentHandler()}>Add To Course</button>
-                        </li>
-                    </ul>
                 </div>
             </div>
         );
