@@ -4,41 +4,49 @@ import { Link } from 'react-router-dom';
 import { fetchCourses } from '../../../reducer/actions';
 import firebase from '../../../config/firebaseConfig';
 import cssClasses from './CourseProfile.css';
-import AddStudents from '../AddStudents/AddStudents';
 
 const db = firebase.firestore().collection('courses');
 const studentsDB = firebase.firestore().collection('students');
 
 class CourseProfile extends Component {
-    state = {studentsList:[{id: null}], allStudents: []}
+    state = { studentsList:[{id: null}] }
     componentDidMount() {
         const {id} = this.props.match.params;
         this.setState({ 
             ...this.props.courses.filter(item => item.id === id)[0]
         });
-        studentsDB.get().then(data => {
+        studentsDB.where('courseId', 'array-contains', id).get().then(data => {
             let allStudentsList = [];
+            console.log(data, '=====>')
             data.docs.forEach(doc => {
                 allStudentsList.push({id: doc.id, ...doc.data()})
             });
-            this.setState({allStudents: allStudentsList});
+            this.setState({studentsList: allStudentsList});
         })
     }
 
     removeUserHandler = (id) => {
         const isConfirm = window.confirm('Are you really want to remove the student?');
         if(isConfirm) {
+            // const findStudent = this.state.studentsList.filter(students => students.id === id);
+            // studentsDB.doc(id).update({courseId: findStudent.courseId.filter(item => item.id !== this.state.id)});
             this.setState(prevState => {
-                return { studentsList: prevState.studentsList.filter(item => item.id !== id)}
+                return { 
+                    studentsList: prevState.studentsList.filter(item => item.id !== id),
+                    msg: 'The student has been removed from the course'
+                }
             });
             db.doc(this.state.id).update({studentsList: this.state.studentsList.filter(item => item.id !== id)});
-        }
+            const currentStudent = studentsDB.doc(id);
+            currentStudent.get().then(doc => {
+                currentStudent.update({
+                    courseId: doc.data().courseId.filter(cId => cId !== this.state.id)
+                });
+            });
+
+        }   
     }  
     
-    addNewStudentsHandler = (id) => {
-        console.log(id)
-        this.setState({studentsList: [...this.state.studentsList, id]});
-    }
     render() {
         const {
             id,
@@ -94,10 +102,10 @@ class CourseProfile extends Component {
                             return(
                                 <li key={item.id}>
                                     <Link to={"/students/"+item.id} className={cssClasses.UserLink}>
-                                        <img src={item.img} alt={item.name}/>
+                                        <img src={item.img || "https://image.flaticon.com/icons/svg/747/747011.svg"} alt={item.name}/>
                                         <div className="UserInfo">
-                                            <h4>{item.name}</h4>
-                                            <span>{item.enrolled}</span>
+                                            <h4>{item.firstName}</h4>
+                                            <span>{new Date(item.createdAt).toLocaleDateString()}</span>
                                             <span>{item.status}</span>
                                         </div>
                                     </Link>
@@ -108,20 +116,6 @@ class CourseProfile extends Component {
                             );
                         })}
                     </ul>
-                </div>
-                <div className="StudentsList">
-                    {this.state.allStudents.map(item => {
-                        return (
-                            <AddStudents 
-                                id={item.id}
-                                key={item.id}
-                                img={item.img}
-                                name={item.firstName + ' ' + item.lastName}
-                                addToList={this.addNewStudentsHandler}
-                            />
-                        );
-                    })}
-                    
                 </div>
             </div>
         );

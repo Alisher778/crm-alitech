@@ -16,7 +16,7 @@ class AddStudent extends Component {
                     payments: [],
                     attendances: [],
                     updatedAt: Date.now(),
-                    courseId: '',
+                    courseId: [],
                 },   
               courseList: [],
               msg: ''
@@ -42,7 +42,16 @@ class AddStudent extends Component {
     userInputHandler = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
-        this.setState({info:{...this.state.info, [name]: value}});
+        
+        if(name === 'courseId') {
+            const courses = this.state.info.courseId;
+            this.setState({
+                info:{...this.state.info, courseId: courses.concat(value)}
+            });
+
+        } else {
+            this.setState({info:{...this.state.info, [name]: value}});
+        }
     }
     formSubmitHandler = (e) => {
         e.preventDefault();
@@ -113,7 +122,7 @@ class AddStudent extends Component {
                         </select>
                         <select 
                             name="courseId" 
-                            value={this.state.info.courseId} 
+                            value={this.state.info.courseId[0]} 
                             onChange={(event) => this.userInputHandler(event)}
                         >   
                         <option value="">Choose The Course</option>

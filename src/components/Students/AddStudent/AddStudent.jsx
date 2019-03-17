@@ -17,7 +17,7 @@ class AddStudent extends Component {
                     attendances: [],
                     createdAt: Date.now(), 
                     updatedAt: Date.now(),
-                    courseId: '',
+                    courseId: [],
                 },   
               courseList: [],
               msg: ''
@@ -35,7 +35,16 @@ class AddStudent extends Component {
     userInputHandler = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
-        this.setState({info:{...this.state.info, [name]: value}});
+        
+        if(name === 'courseId') {
+            const courses = this.state.info.courseId;
+            this.setState({
+                info:{...this.state.info, courseId: courses.concat(value)}
+            });
+
+        } else {
+            this.setState({info:{...this.state.info, [name]: value}});
+        }
     }
     formSubmitHandler = (e) => {
         e.preventDefault();

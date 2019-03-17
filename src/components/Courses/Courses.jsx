@@ -10,6 +10,7 @@ const db = firebase.firestore().collection('courses');
 
 class Courses extends Component {
     state = {msg: ''}
+    
     componentDidMount() {
         db.get().then(data => {
             const {docs} = data;
@@ -36,6 +37,7 @@ class Courses extends Component {
     courseLinkHandler = (id) => {
         this.props.history.push('/courses/'+id);
     }
+
     deleteCourseHandler = (id) => {
         this.props.removeSelectedCourse(id);
         db.doc(id).delete()
