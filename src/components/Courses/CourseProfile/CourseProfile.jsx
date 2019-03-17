@@ -114,7 +114,7 @@ class CourseProfile extends Component {
                         return (
                             <AddStudents 
                                 id={item.id}
-                                key={item.key}
+                                key={item.id}
                                 img={item.img}
                                 name={item.firstName + ' ' + item.lastName}
                                 addToList={this.addNewStudentsHandler}

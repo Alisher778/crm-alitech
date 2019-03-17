@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import cssClasses from './SingleCourse.css';
 
 const singleCourse = (props) => {
+    console.log(props)
+    const [toggle, setToggle] = useState(false);
     const { 
         id,
         img, 
         price, 
-        title, 
+        title,
+        deleteCourse, 
         status, 
         duration, 
         startDate, 
@@ -16,7 +20,7 @@ const singleCourse = (props) => {
         studentsNumber
     } = props;
     return (
-        <div className={cssClasses.CourseWrapper} onClick={() => courseLink(id)}>
+        <div className={cssClasses.CourseWrapper}>
             <div className={cssClasses.Left}>
                 <img src={img} alt={title}/>
             </div>
@@ -32,6 +36,17 @@ const singleCourse = (props) => {
                     <span>{new Date(startDate).toLocaleDateString()}</span>
                     <span>{duration}</span>
                     <span>{price}</span>
+                </div>
+                <button onClick={() => courseLink(id)}>View</button>
+                <div className="CourseActions">
+                    <button onClick={() => setToggle(!toggle)} >:</button>
+                    <div 
+                        className="ActionNames" 
+                        style={{display: toggle? 'block' : 'none'}}
+                    >
+                        <Link to={'/courses/'+id+'/edit'}>Edit</Link>
+                        <button onClick={() => deleteCourse(id)}>Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

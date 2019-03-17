@@ -1,4 +1,4 @@
-import { FETCH_COURSES } from '../actions';
+import { FETCH_COURSES, REMOVE_COURSE } from '../actions';
 const initialState = {courses: []};
 
 const coursesReducer = (state=initialState, action) => {
@@ -7,6 +7,12 @@ const coursesReducer = (state=initialState, action) => {
             return {
                 ...state,
                 courses: action.courses
+            }
+        }
+        case REMOVE_COURSE: {
+            return {    
+                ...state, 
+                courses: state.courses.filter((item) => item.id !== action.id)
             }
         }
         default: 
