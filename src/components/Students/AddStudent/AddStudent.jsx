@@ -53,7 +53,11 @@ class AddStudent extends Component {
             .then(res => {
                 this.setState({msg: 'Student saved successfully'})
             })
-            .catch(err => this.setState({msg: err.message}))
+            .catch(err => this.setState({msg: err.message}));
+        // Add current student to the courses studentsList collection
+        this.state.info.courseId.forEach((id) => {
+            courseDB.doc(id).collection('studentsList').add(this.state.info);
+        })
     }
     render() {
         console.log(this.state)
